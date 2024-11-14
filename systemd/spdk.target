@@ -1,0 +1,5 @@
+[Unit]
+Description=SPDK target allowing to start/stop all spdk-* services at once
+
+[Install]
+WantedBy=multi-user.target

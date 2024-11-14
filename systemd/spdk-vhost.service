@@ -1,0 +1,14 @@
+[Unit]
+Description=SPDK vhost service
+PartOf=spdk.target
+Wants=network-online.target
+After=network-online.target
+Before=spdk.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/sysconfig/spdk-vhost
+ExecStart=/usr/local/bin/vhost --rpc-socket /var/run/spdk-vhost.sock -S /var/run $ARGS
+
+[Install]
+WantedBy=multi-user.target

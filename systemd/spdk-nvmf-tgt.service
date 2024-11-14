@@ -1,0 +1,14 @@
+[Unit]
+Description=SPDK NVMf target service
+PartOf=spdk.target
+Wants=network-online.target
+After=network-online.target
+Before=spdk.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/sysconfig/spdk-nvmf-tgt
+ExecStart=/usr/local/bin/nvmf_tgt --rpc-socket /var/run/spdk-nvmf-tgt.sock $ARGS
+
+[Install]
+WantedBy=multi-user.target
