@@ -9,6 +9,7 @@ Before=spdk.target
 Type=simple
 EnvironmentFile=/etc/sysconfig/spdk-vhost
 ExecStart=/usr/local/bin/vhost --rpc-socket /var/run/spdk-vhost.sock -S /var/run $ARGS
+ExecStartPost=/usr/libexec/spdk/scripts/systemd/spdk-vhost-exec-start-post.sh /var/run/spdk-vhost.sock $SOCKET_WRITE_GROUP
 
 [Install]
 WantedBy=multi-user.target
