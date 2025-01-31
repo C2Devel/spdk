@@ -1,4 +1,4 @@
 # CPU 0
 ARGS="--cpumask 0x0000000000000001"
-SOCKET_GROUP="_c2"
+SOCKET_GROUP="root"
 SOCKET_PATH="/var/run/spdk-vhost.sock"
