@@ -8,7 +8,8 @@ Before=spdk.target
 [Service]
 Type=simple
 EnvironmentFile=/etc/sysconfig/spdk-vhost
-ExecStart=/usr/local/bin/vhost --rpc-socket /var/run/spdk-vhost.sock -S /var/run $ARGS
+ExecStart=/usr/local/bin/vhost --rpc-socket $SOCKET_PATH -S /var/run $ARGS
+ExecStartPost=/usr/libexec/spdk/scripts/systemd/spdk-vhost-exec-start-post.sh $SOCKET_PATH $SOCKET_GROUP
 
 [Install]
 WantedBy=multi-user.target
